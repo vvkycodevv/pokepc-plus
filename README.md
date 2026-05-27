@@ -4,7 +4,7 @@
 ![Opera Extension](https://img.shields.io/badge/Opera-Extension-red?logo=opera&logoColor=white)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)
 
-A browser extension that adds a living dex tracker and Pokémon search to [pokepc.net](https://pokepc.net/livingdex). Works on Chrome and Opera.
+A browser extension that adds a living dex tracker and Pokémon search to [pokepc.net](https://pokepc.net/livingdex). Works on Chrome and Opera (and probably other browsers idk I haven't tried tbh).
 
 ---
 
@@ -19,8 +19,6 @@ A browser extension that adds a living dex tracker and Pokémon search to [pokep
 ---
 
 ## 🚀 Installation
-
-### Chrome
 
 1. Download or clone this repo.
 2. Go to `chrome://extensions`.
