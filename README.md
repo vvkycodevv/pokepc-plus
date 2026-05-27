@@ -8,7 +8,7 @@ A browser extension that adds a living dex tracker and Pokémon search to [pokep
 
 Open source - I'm not stealing your Pokémon.
 
-![Screenshot](Screenshots/SS1.png)
+<img src="Screenshots/SS1.png" alt="PokéPC+ screenshot" width="600"/>
 
 ---
 
