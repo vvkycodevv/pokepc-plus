@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "PokéPC Living Dex Search",
+  "version": "1.0.0",
+  "description": "Search and navigate to any Pokémon on pokepc.net Living Dex",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://pokepc.net/livingdex*"],
+      "js": ["pokemon-data.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

@@ -1,0 +1,416 @@
+#pokepc-search-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 99999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#pokepc-search-input {
+  width: 260px;
+  padding: 10px 14px;
+  border: 2px solid #cc3340;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+  outline: none;
+  background: #fafafa;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#pokepc-search-input:focus {
+  border-color: #e63946;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(230,57,70,0.3);
+}
+
+#pokepc-search-input::placeholder {
+  color: #777;
+  font-weight: 400;
+}
+
+#pokepc-search-info {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 12px;
+  color: #1a1a2e;
+  font-weight: 500;
+}
+
+#pokepc-search-info.visible {
+  display: flex;
+}
+
+#pokepc-search-info .match-text {
+  font-weight: 600;
+  color: #333;
+}
+
+#pokepc-search-info .nav-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+#pokepc-search-info .nav-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+#pokepc-search-info .nav-btn:hover {
+  background: #d62828;
+}
+
+#pokepc-search-info .nav-btn:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+#pokepc-progress-bar {
+  padding: 6px 14px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 11px;
+  color: #555;
+  font-weight: 500;
+}
+
+#pokepc-progress-bar .progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#pokepc-progress-bar .progress-track {
+  height: 6px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+#pokepc-progress-bar .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+#pokepc-reset-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0 2px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+#pokepc-reset-btn:hover {
+  color: #e63946;
+}
+
+/* Reset confirmation modal */
+#pokepc-reset-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+#pokepc-reset-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#pokepc-reset-dialog {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transform: scale(0.92);
+  transition: transform 0.2s ease;
+  max-width: 320px;
+}
+
+#pokepc-reset-overlay.visible #pokepc-reset-dialog {
+  transform: scale(1);
+}
+
+#pokepc-reset-dialog h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #1a1a2e;
+}
+
+#pokepc-reset-dialog p {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: #666;
+}
+
+#pokepc-reset-dialog .dialog-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#pokepc-reset-dialog .dialog-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+#pokepc-reset-dialog .dialog-btn:active {
+  transform: scale(0.96);
+}
+
+#pokepc-reset-dialog .btn-cancel {
+  background: #e8e8e8;
+  color: #555;
+}
+
+#pokepc-reset-dialog .btn-cancel:hover {
+  background: #ddd;
+}
+
+#pokepc-reset-dialog .btn-confirm {
+  background: #e63946;
+  color: #fff;
+}
+
+#pokepc-reset-dialog .btn-confirm:hover {
+  background: #d62828;
+}
+
+/* Highlight styles */
+.pokepc-highlight {
+  outline: 3px solid #e63946 !important;
+  outline-offset: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(230,57,70,0.5) !important;
+  animation: pokepc-pulse 1.5s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
+}
+
+.pokepc-highlight-secondary {
+  outline: 2px solid #f4a261 !important;
+  outline-offset: 1px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(244,162,97,0.4) !important;
+  position: relative;
+  z-index: 5;
+}
+
+@keyframes pokepc-pulse {
+  0%, 100% { outline-color: #e63946; box-shadow: 0 0 16px rgba(230,57,70,0.5) !important; }
+  50% { outline-color: #f4a261; box-shadow: 0 0 24px rgba(244,162,97,0.6) !important; }
+}
+
+/* Tick mark styles */
+.pokepc-tick {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(150, 150, 150, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.pokepc-tick.done {
+  background: #2ecc71;
+  border-color: #27ae60;
+  box-shadow: 0 1px 4px rgba(39, 174, 96, 0.4);
+}
+
+.pokepc-tick.done::after {
+  content: '\2713';
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Clickable pokemon cell */
+.pokepc-has-tick {
+  position: relative !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.25s ease, filter 0.25s ease;
+}
+
+.pokepc-has-tick:hover {
+  transform: scale(1.08);
+  z-index: 2;
+}
+
+.pokepc-has-tick:active {
+  transform: scale(0.95);
+}
+
+/* Caught = greyed out */
+.pokepc-has-tick.pokepc-done img {
+  opacity: 0.35;
+  filter: grayscale(70%) brightness(0.85);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.pokepc-has-tick img {
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* Catch animation */
+@keyframes pokepc-catch {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(0.85); }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pokepc-uncatch {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.pokepc-anim-catch {
+  animation: pokepc-catch 0.3s ease forwards;
+}
+
+.pokepc-anim-uncatch {
+  animation: pokepc-uncatch 0.25s ease forwards;
+}
+
+/* Box heading toggle */
+h2.pokepc-box-heading {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-right: 28px;
+}
+
+h2.pokepc-box-heading:hover {
+  color: #2ecc71;
+}
+
+h2.pokepc-box-heading .pokepc-box-tick {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(150, 150, 150, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  vertical-align: middle;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+h2.pokepc-box-heading .pokepc-box-tick.all-done {
+  background: #2ecc71;
+  border-color: #27ae60;
+}
+
+h2.pokepc-box-heading .pokepc-box-tick.all-done::after {
+  content: '\2713';
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Box-level catch/uncatch wave */
+@keyframes pokepc-box-wave {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pokepc-box-anim li.pokepc-has-tick {
+  animation: pokepc-box-wave 0.35s ease both;
+}
+
+/* Custom tooltip - replaces native broken tooltips */
+#pokepc-tooltip {
+  position: fixed;
+  z-index: 999999;
+  background: #1a1a2e;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+#pokepc-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#pokepc-tooltip .tooltip-dex {
+  color: #aaa;
+  font-weight: 400;
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+/* Suppress native site tooltips */
+li[data-pokepc-id] * {
+  title: none;
+}
+
+li[data-pokepc-id] img[title] {
+  pointer-events: auto;
+}
