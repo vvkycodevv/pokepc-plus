@@ -1,9 +1,10 @@
 # PokéPC+ 🔴
 
 ![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-red?logo=googlechrome&logoColor=white)
+![Opera Extension](https://img.shields.io/badge/Opera-Extension-red?logo=opera&logoColor=white)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)
 
-A Chrome extension that adds a living dex tracker and Pokémon search to [pokepc.net](https://pokepc.net/livingdex).
+A browser extension that adds a living dex tracker and Pokémon search to [pokepc.net](https://pokepc.net/livingdex). Works on Chrome and Opera.
 
 ---
 
@@ -19,8 +20,18 @@ A Chrome extension that adds a living dex tracker and Pokémon search to [pokepc
 
 ## 🚀 Installation
 
+### Chrome
+
 1. Download or clone this repo.
-2. Open Chrome and go to `chrome://extensions`.
+2. Go to `chrome://extensions`.
+3. Enable **Developer mode** (toggle in the top right).
+4. Click **Load unpacked** and select the project folder.
+5. Navigate to `pokepc.net/livingdex` — the extension activates automatically.
+
+### Opera
+
+1. Download or clone this repo.
+2. Go to `opera://extensions`.
 3. Enable **Developer mode** (toggle in the top right).
 4. Click **Load unpacked** and select the project folder.
 5. Navigate to `pokepc.net/livingdex` — the extension activates automatically.
